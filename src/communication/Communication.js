@@ -1,5 +1,7 @@
 import url from "url";
 
+import VitaminParse from "../parsing/VitaminParse.js";
+
 export default class Communication {
     constructor(baseUrl, preload = true) {
         this.baseUrl = baseUrl;
@@ -32,7 +34,7 @@ export default class Communication {
 
         var out = [];
         for (let i in promises) {
-            out[i] = await promises[i];
+            out[i] = VitaminParse(await promises[i]);
         }
         return out;
     }

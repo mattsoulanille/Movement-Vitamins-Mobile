@@ -3,7 +3,7 @@ import { View, Text, FlatList } from "react-native";
 import { SearchBar, List, ListItem } from "react-native-elements";
 
 
-export default class ScreeningList extends Component {
+export default class ScreeningScreen extends Component {
     static navigationOptions = {
         title: "Screening"
     }

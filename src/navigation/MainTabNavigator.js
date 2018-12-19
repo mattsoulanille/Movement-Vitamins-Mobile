@@ -10,6 +10,9 @@ import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import VitaminInfo from '../screens/VitaminInfo';
 
+import Communication from "../communication/Communication.js";
+const communication = new Communication("http://54.196.72.127");
+
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
 });
@@ -61,6 +64,7 @@ const ScreeningStack = createStackNavigator({
     Screening: ScreeningScreen,
 });
 
+
 ScreeningStack.navigationOptions = {
     tabBarLabel: "Screening",
     tabBarIcon: ({ focused }) => (
@@ -71,16 +75,17 @@ ScreeningStack.navigationOptions = {
     ),
 };
 
+
 const VitaminsStack = createStackNavigator({
     Vitamins: VitaminList,
     VitaminInfo: VitaminInfo,
 }, {
-    initialRouteName: "Vitamins",
-    initialRouteParams: {
-	vitamins: global.communication.getAllVitamins()
-    }
-});
-					  
+        initialRouteName: "Vitamins",
+        initialRouteParams: {
+            vitamins: communication.getAllVitamins()
+        }
+    });
+
 
 VitaminsStack.navigationOptions = {
     tabBarLabel: "Vitamin",

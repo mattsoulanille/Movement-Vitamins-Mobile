@@ -26,7 +26,6 @@ export default class VitaminList extends Component {
         // as a promise
         var data = await this.props.navigation.state.params.vitamins;
         this.setState({data});
-        debugger;
     }
 
     componentDidMount() {
