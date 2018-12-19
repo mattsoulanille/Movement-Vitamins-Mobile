@@ -18,37 +18,16 @@ import AppNavigator from './src/navigation/AppNavigator';
 import { StatusBar } from 'react-native';
 import MainTabNavigator from './src/navigation/MainTabNavigator';
 
-// export default createStackNavigator({
-
-//     Home: { screen: HomeScreen },
-//     Screening: { screen: ScreeningList },
-//     AllVitamins: { screen: VitaminList },
-//     VitaminInfo: { screen: VitaminInfo },
-//     Login: { screen: LoginScreen }
-// });
+import Communication from "../communication/Communication.js";
+var communication = 
 
 
-var TestStack = createStackNavigator({
-    Login: LoginScreen
-});
-// export default TestStack;
+
+
+// Yes it's terrible. I should be using contexts.
+global.communication = new Communication("http://54.196.72.127");
 
 export default AppNavigator;
-
-// export default class App extends React.Component {
-//     render() {
-//         return (
-//             <View style={styles.container}>
-//               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-//               <TestStack/>
-//               <AppNavigator />
-//             </View>
-//         );
-//     }
-// }
-
-
-//export default App;
 
 const styles = StyleSheet.create({
     container: {

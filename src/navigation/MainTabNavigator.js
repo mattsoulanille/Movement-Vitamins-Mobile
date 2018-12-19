@@ -74,7 +74,13 @@ ScreeningStack.navigationOptions = {
 const VitaminsStack = createStackNavigator({
     Vitamins: VitaminList,
     VitaminInfo: VitaminInfo,
+}, {
+    initialRouteName: "Vitamins",
+    initialRouteParams: {
+	vitamins: global.communication.getAllVitamins()
+    }
 });
+					  
 
 VitaminsStack.navigationOptions = {
     tabBarLabel: "Vitamin",

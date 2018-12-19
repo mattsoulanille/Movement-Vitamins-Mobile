@@ -4,15 +4,10 @@ export default class Communication {
     constructor(baseUrl, preload = true) {
         this.baseUrl = baseUrl;
         this._allVitamins = null;
+        this.userID = 1; // TODO: Let the user log in
         if (preload) {
             this.getAllVitamins();
         }
-    }
-
-    async getVitamin(vitaminUrl) {
-        var res = await fetch(vitaminUrl);
-        var json = await res.json();
-        return json;
     }
 
     getAllVitamins() {
@@ -40,5 +35,18 @@ export default class Communication {
             out[i] = await promises[i];
         }
         return out;
+    }
+
+    async submitScreening(screening) {
+        // Posts a screening to the server and gets the recommended vitamins
+        // TODO: Pull the screening format from the server
+        var toPost = {
+            method: "POST",
+            body: JSON.stringify(screening)
+        };
+
+        var res = await fetch(url.resolve(this.baseUrl, "api/v1/users/new_screening/", this.userID), toPost);
+        console.log(res);
+
     }
 }

@@ -6,11 +6,6 @@ import * as Papa from "papaparse";
 
 import VitaminParse from "../parsing/VitaminParse.js";
 
-import Communication from "../communication/Communication.js";
-
-var comm = new Communication("http://54.196.72.127");
-
-
 export default class VitaminList extends Component {
     static navigationOptions = {
         title: "Movement Vitamins"
@@ -18,43 +13,20 @@ export default class VitaminList extends Component {
 
     constructor() {
         super(...arguments);
-
         this.state = {
             loading: false,
             data: [],
-            page: 1,
-            seed: 1,
             error: null,
-            refreshing: false,
         };
 
     }
 
     async getData() {
-        // Temporary. Will refactor pulling vitamin data once the API supports it.
-        this.setState({ loading: true });
-
-        var allVitamins;
-        var errors = [];
-        try {
-            allVitamins = await comm.getAllVitamins();
-            console.log(allVitamins);
-        }
-        catch (e) {
-            errors.push(e);
-        }
-
-        try {
-            this.setState({
-                data: allVitamins.map(VitaminParse),
-                error: errors.length == 0 ? errors : null,
-                loading: false,
-                refreshing: false
-            });
-        }
-        catch (error) {
-            this.setState({ error, loading: false });
-        }
+        // Vitamins to display are passed in the vitamins parameter
+        // as a promise
+        var data = await this.props.navigation.state.params.vitamins;
+        this.setState({data});
+        debugger;
     }
 
     componentDidMount() {
