@@ -1,9 +1,12 @@
 import url from "url";
 
 export default class Communication {
-    constructor(baseUrl) {
+    constructor(baseUrl, preload = true) {
         this.baseUrl = baseUrl;
-
+        this._allVitamins = null;
+        if (preload) {
+            this.getAllVitamins();
+        }
     }
 
     async getVitamin(vitaminUrl) {
@@ -12,7 +15,14 @@ export default class Communication {
         return json;
     }
 
-    async getAllVitamins() {
+    getAllVitamins() {
+        if (!this._allVitamins) {
+            this._allVitamins = this._getAllVitamins();
+        }
+        return this._allVitamins;
+    }
+
+    async _getAllVitamins() {
         var u = url.resolve(this.baseUrl, "api/v1/vitamins");
         var res = await fetch(u);
         var vitaminsJson = await res.json();
