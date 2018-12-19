@@ -35,7 +35,7 @@ export default class SettingsScreen extends React.Component {
               </View>
             }
             itemWidth={50}
-            title='Example Setting 1'
+            title='User Profile Setting'
             onPress={() => Alert.alert('Make this route to login')}
           />
         <SettingsList.Item
@@ -43,10 +43,16 @@ export default class SettingsScreen extends React.Component {
             switchState={this.state.switchValue}
             switchOnValueChange={this.onValueChange}
             hasSwitch={true}
-            title='Example Setting 2'/>
+            title='Dark Mode'/>
+        <SettingsList.Item
+            hasNavArrow={false}
+            switchState={this.state.switchValue}
+            switchOnValueChange={this.onValueChange}
+            hasSwitch={true}
+            title='Push Notifications'/>
       </SettingsList>
     </View>
   );
-}
-
   }
+
+}

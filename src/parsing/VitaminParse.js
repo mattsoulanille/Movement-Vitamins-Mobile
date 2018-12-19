@@ -4,11 +4,11 @@
 function VitaminParse(obj) {
     return {
 	description: obj.Description,
-	mobility: obj.Mobility === "TRUE",
-	name: obj.Name,
-	stability: obj.Stability === "TRUE",
+	mobility: obj.Mobility,
+	name: obj.name,
+	stability: obj.Stability,
 	targetArea: obj["Target Area"],
-	youtubeLink: obj["YouTube Link"]
+	youtubeLink: obj.Link
     };
 }
 

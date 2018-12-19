@@ -16,12 +16,45 @@ export default class ScreeningList extends Component {
         };
 
         this.state.data.push({
-            name:"example boolean input",
+            name:"Mobility Ankles",
             type:"boolean"
         });
 
         this.state.data.push({
-            name:"example number input",
+            name:"Mobility Hips",
+            type:"boolean"
+        });
+        this.state.data.push({
+            name:"Mobility Shoulder Flexion",
+            type:"boolean"
+        });
+
+        this.state.data.push({
+            name:"Mobility Shoulder Rotation",
+            type:"boolean"
+        });
+
+        this.state.data.push({
+            name:"Stability Foot / Ankle",
+            type:"boolean"
+        });
+
+	this.state.data.push({
+            name:"Stability Hips",
+            type:"boolean"
+        });
+        this.state.data.push({
+            name:"Stability Upper Body",
+            type:"boolean"
+        });
+
+	this.state.data.push({
+            name:"Squat Tag",
+            type:"boolean"
+        });
+
+	this.state.data.push({
+            name:"Squat Cord Height",
             type:"number"
         });
     }
