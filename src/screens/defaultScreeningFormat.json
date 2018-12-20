@@ -1,0 +1,52 @@
+{
+    "values": [
+	{
+	    "name": "Shoulder Flexion",
+	    "dataName": "shoulder_flexion",
+	    "format": {"Yes":"Y", "No":"N", "Left":"L", "Right":"R"},
+	    "value": "N"
+	},
+	{
+	    "name": "Shoulder Rotation",
+	    "dataName": "shoulder_rotation",
+	    "format": {"Yes":"Y", "No":"N", "Left":"L", "Right":"R"},
+	    "value": "N"
+	},
+	{
+	    "name": "Ankle Mobility",
+	    "dataName": "ankle_mobility",
+	    "format": {"Yes":"Y", "No":"N", "Left":"L", "Right":"R"},
+	    "value": "N"
+	},
+	{
+	    "name": "Supine Squat",
+	    "dataName": "supine_squat",
+	    "format": {"Yes":"Y", "No":"N"},
+	    "value": "N"
+	},
+	{
+	    "name": "Active Straight Leg Raise",
+	    "dataName": "active_straight_leg_raise",
+	    "format": {"Yes":"Y", "No":"N", "Left":"L", "Right":"R"},
+	    "value": "N"
+	},
+	{
+	    "name": "Overhead Squat",
+	    "dataName": "overhead_squat",
+	    "format": {"Yes":"Y", "No":"N"},
+	    "value": "N"
+	},
+	{
+	    "name": "Arms Extended Squat",
+	    "dataName": "arms_extended_squat",
+	    "format": {"Yes":"Y", "No":"N"},
+	    "value": "N"
+	},
+	{
+	    "name": "Foot Collapse",
+	    "dataName": "foot_collapse",
+	    "format": {"Yes":"Y", "No":"N", "Left":"L", "Right":"R"},
+	    "value": "N"
+	}
+    ]
+}
