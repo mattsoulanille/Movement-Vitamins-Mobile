@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, ScrollView, Text, FlatList } from "react-native";
 import { SearchBar, List, ListItem } from "react-native-elements";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from "react-native-simple-radio-button";
 
 
 export default class ScreeningList extends Component {
@@ -84,14 +85,28 @@ export default class ScreeningList extends Component {
 		this.updateState(index, sanitized);
 
             };
+            return React.createElement(ListItem, props);
 	}
 	else {
-            props.switchButton = true;
-            props.switched = item.value || false;
-            props.onSwitch = this.updateState.bind(this, index);
+            //props.switchButton = true;
+            //props.switched = item.value || false;
+            //props.onSwitch = this.updateState.bind(this, index);
+            //return React.createElement(ListItem, props);
+            var radio_props = [];
+            for (let label in item.format) {
+                radio_props.push({ label, value:item.format[label]});
+            }
+            
+            return (<ScrollView horizontal={true}>
+                      <Text>{item.name}</Text>
+                      <RadioForm
+                        radio_props={radio_props}
+                        formHorizontal={true}
+                        onPress={(val) => {this.updateState(index, val);}}
+                      />
+                    </ScrollView>
+                   );            
 	}
-	
 
-	return React.createElement(ListItem, props);
     }
 }
