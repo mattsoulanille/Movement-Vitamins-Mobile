@@ -44,11 +44,19 @@ export default class Communication {
         // TODO: Pull the screening format from the server
         var toPost = {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+                "cache-control": "no-cache"
+            },
             body: JSON.stringify(screening)
         };
 
-        var res = await fetch(url.resolve(this.baseUrl, "api/v1/users/new_screening/", this.userID), toPost);
-        console.log(res);
+
+        var postUrl = url.resolve(this.baseUrl, "api/v1/users/new_screening/" + this.userID);
+        console.log(postUrl);
+        var res = await fetch(postUrl, toPost);
+
+        return await res.json();
 
     }
 }

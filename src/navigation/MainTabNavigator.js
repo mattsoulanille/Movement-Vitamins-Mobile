@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import ScreeningScreen from '../screens/ScreeningScreen';
+import ScreeningScreenBind from '../screens/ScreeningScreen';
 import VitaminList from '../screens/VitaminList';
 import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -60,8 +60,13 @@ SettingsStack.navigationOptions = {
     ),
 };
 
+
 const ScreeningStack = createStackNavigator({
-    Screening: ScreeningScreen,
+    Screening: ScreeningScreenBind(communication),
+    Vitamins: VitaminList,
+    VitaminInfo: VitaminInfo
+}, {
+    initialRouteName: "Screening",
 });
 
 
