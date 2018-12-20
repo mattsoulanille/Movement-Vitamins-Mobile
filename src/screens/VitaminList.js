@@ -48,7 +48,7 @@ export default class VitaminList extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <List>
+            <List containerStyle={{marginTop:0}}>
                 <FlatList
                     data={this.state.data}
                     keyExtractor={item => item.name}

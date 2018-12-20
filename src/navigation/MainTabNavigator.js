@@ -80,11 +80,11 @@ const VitaminsStack = createStackNavigator({
     Vitamins: VitaminList,
     VitaminInfo: VitaminInfo,
 }, {
-        initialRouteName: "Vitamins",
-        initialRouteParams: {
-            vitamins: communication.getAllVitamins()
-        }
-    });
+    initialRouteName: "Vitamins",
+    initialRouteParams: {
+        vitamins: communication.getAllVitamins()
+    }
+});
 
 
 VitaminsStack.navigationOptions = {

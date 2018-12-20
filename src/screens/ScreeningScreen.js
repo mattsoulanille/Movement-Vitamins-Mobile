@@ -1,120 +1,34 @@
 import React, { Component } from "react";
-import { View, Text, FlatList } from "react-native";
-import { SearchBar, List, ListItem } from "react-native-elements";
-
+import { ScrollView, Text } from "react-native";
+import ScreeningList from "./ScreeningList.js";
+import { Button } from "react-native-elements";
 
 export default class ScreeningScreen extends Component {
     static navigationOptions = {
         title: "Screening"
     }
-
     constructor() {
-	super(...arguments);
-        this.state = {
-            loading: false,
-            data: [],
-        };
-
-        this.state.data.push({
-            name:"Mobility Ankles",
-            type:"boolean"
-        });
-
-        this.state.data.push({
-            name:"Mobility Hips",
-            type:"boolean"
-        });
-        this.state.data.push({
-            name:"Mobility Shoulder Flexion",
-            type:"boolean"
-        });
-
-        this.state.data.push({
-            name:"Mobility Shoulder Rotation",
-            type:"boolean"
-        });
-
-        this.state.data.push({
-            name:"Stability Foot / Ankle",
-            type:"boolean"
-        });
-
-	this.state.data.push({
-            name:"Stability Hips",
-            type:"boolean"
-        });
-        this.state.data.push({
-            name:"Stability Upper Body",
-            type:"boolean"
-        });
-
-	this.state.data.push({
-            name:"Squat Tag",
-            type:"boolean"
-        });
-
-	this.state.data.push({
-            name:"Squat Cord Height",
-            type:"number"
-        });
+        super(...arguments);
+        this.formData = {};
     }
 
+    submit() {
+        console.log("Submitting Screening");
+        console.log(this.formData);
+    }    
+    
     render() {
-        const {navigate} = this.props.navigation;
-	
-        return (
-            <List>
-	      <FlatList
-	        data={this.state.data}
-                keyExtractor={item => item.name}
-            //ItemSeparatorComponent={this.renderSeparator}
-	        renderItem={getListEntry.bind(this)}
-	      />
-            </List>
+	return (
+            <ScrollView>
+              <ScreeningList
+                onNewData={(newData) => {this.formData = newData;}}
+              />
+              <Button
+                title="Submit"
+                rightIcon={{name:"arrow-forward"}}
+                onPress={this.submit.bind(this)}
+              />
+            </ScrollView>
 	);
     }
 }
-
-
-function updateState(index, val) {
-    this.setState(previousState => {
-        var newData = [...previousState.data];
-        newData[index].value = val;
-        console.log(val);
-        return {data:newData};
-    });
-}
-
-function getListEntry({item, index}) {
-    var props = {
-        title: item.name,
-        hideChevron:true,
-
-    };
-
-
-    if (item.type == "boolean") {
-        props.switchButton = true;
-        props.switched = item.value || false;
-        props.onSwitch = updateState.bind(this, index);
-    }
-    else if (item.type == "number") {
-        props.textInput = true;
-        props.textInputStyle = {
-            paddingTop: 0,
-            paddingBottom: 0,
-            marginVertical: 3.5
-        };
-        props.textInputSelectTextOnFocus = true;
-        props.textInputKeyboardType = "numeric";
-        props.textInputPlaceholder = "Number";
-        props.textInputValue = typeof item.value == "undefined" ? "" : ""+item.value;
-        props.textInputOnChangeText = (val) => {
-            // Stupid hacky
-            var sanitized = val.match(/[0-9]*(.[0-9]*)?/g)[0];
-            updateState.call(this, index, sanitized);
-
-        };
-    }
-    return React.createElement(ListItem, props);
-};
