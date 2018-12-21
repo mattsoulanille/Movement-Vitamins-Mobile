@@ -97,11 +97,13 @@ export default class ScreeningList extends Component {
                 radio_props.push({ label, value:item.format[label]});
             }
             
-            return (<ScrollView horizontal={true}>
-                      <Text>{item.name}</Text>
+            return (<ScrollView horizontal={true} style={{ marginVertical: 10 }}>
+                      <Text style={{alignSelf:'center',fontSize:20,justifyContent:'center',alignItems:'center'}}>{item.name}</Text>
                       <RadioForm
                         radio_props={radio_props}
                         formHorizontal={true}
+                        labelHorizontal={false}
+                        align
                         onPress={(val) => {this.updateState(index, val);}}
                       />
                     </ScrollView>
